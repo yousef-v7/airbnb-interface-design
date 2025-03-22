@@ -1,3 +1,4 @@
+// components/header/Header.tsx
 import Link from "next/link";
 import Image from "next/image";
 import logImg from "@/public/Airbnb_Logo_Bélo.svg.png";
@@ -5,7 +6,11 @@ import logoPhone from "@/public/Logo_Phone.svg";
 import SearchBar from "@/app/components/header/Searchbar";
 import Navbar from "@/app/components/header/Navbar";
 
-const Header = ({ placeholder }: { placeholder?: string }) => {
+interface HeaderProps {
+  placeholder?: string;
+}
+
+const Header = ({ placeholder }: HeaderProps) => {
   return (
     <header className="flex items-center justify-between gap-x-4 py-4 px-4 sm:px-8 md:px-16 lg:px-24 bg-white shadow-sm relative">
       {/* Logo Section */}
@@ -18,19 +23,17 @@ const Header = ({ placeholder }: { placeholder?: string }) => {
         </div>
       </Link>
 
-      {/* Searchbar (Hidden on small screens, responsive width on mid screens) */}
+      {/* Searchbar */}
       <div className="hidden sm:flex flex-grow justify-center md:w-[50%] lg:w-[60%]">
-        <SearchBar placeholder={placeholder}/>
+        <SearchBar placeholder={placeholder} />
       </div>
 
-      {/* Navbar (Icons-only for small screens) */}
+      {/* Responsive Navbar */}
       <div className="flex sm:hidden">
-        <Navbar iconsOnly />
+        <Navbar iconsOnly={true} />
       </div>
-
-      {/* Full Navbar for larger screens */}
       <div className="hidden sm:flex">
-      <Navbar iconsOnly={false} />
+        <Navbar iconsOnly={false} />
       </div>
     </header>
   );
