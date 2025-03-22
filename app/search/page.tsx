@@ -13,6 +13,7 @@ type CustomSearchParams = {
   numOfGuests: string;
 };
 //comment
+//
 
 const SearchResult = async ({
   searchParams: { location, startDate, endDate, numOfGuests },
