@@ -6,23 +6,31 @@ import { SearchResultData } from "@/app/types/app";
 import ListingCard from "@/app/components/ListingCard";
 
 type SearchParams = {
-  location: string;
-  startDate: string;
-  endDate: string;
-  numOfGuests: string;
+  location?: string;
+  startDate?: string;
+  endDate?: string;
+  numOfGuests?: string;
 };
+
 const SearchResult = async ({
-  searchParams: { location, startDate, endDate, numOfGuests },
+  searchParams: { 
+    location = '', 
+    startDate = '', 
+    endDate = '', 
+    numOfGuests = '' 
+  },
 }: {
   searchParams: SearchParams;
 }) => {
-  let formatedStartDate;
-  let formatedEndDate;
+  let formatedStartDate = '';
+  let formatedEndDate = '';
+  
   if (startDate && endDate) {
     formatedStartDate = format(new Date(startDate), "dd MMMM yy");
     formatedEndDate = format(new Date(endDate), "dd MMMM yy");
   }
-  const range = `${formatedStartDate} - ${formatedEndDate}`;
+  
+  const range = `${formatedStartDate}${formatedEndDate ? ` - ${formatedEndDate}` : ''}`;
 
   const filters = [
     "Cancellation Flexibility",
@@ -40,10 +48,10 @@ const SearchResult = async ({
       <main>
         <div className="container mx-auto">
           <p className="text-xs">
-            300+ Stays - {range} - for {numOfGuests} guests
+            300+ Stays - {range || 'Select dates'} - for {numOfGuests || '0'} guests
           </p>
-          <h1 className="text-3xl font-semibold mt-2 mb-6 ">
-            Stays in {location}
+          <h1 className="text-3xl font-semibold mt-2 mb-6">
+            Stays in {location || 'your destination'}
           </h1>
 
           <div className="hidden lg:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">
