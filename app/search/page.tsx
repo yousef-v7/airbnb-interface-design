@@ -12,8 +12,6 @@ type CustomSearchParams = {
   endDate: string;
   numOfGuests: string;
 };
-//comment
-//
 
 const SearchResult = async ({
   searchParams: { location, startDate, endDate, numOfGuests },
@@ -95,4 +93,3 @@ const SearchResult = async ({
 };
 
 export default SearchResult;
-//me
