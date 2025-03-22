@@ -5,8 +5,18 @@ import { get_SearchResult } from "@/app/utils/api";
 import { SearchResultData } from "@/app/types/app";
 import ListingCard from "@/app/components/ListingCard";
 
-// Removed the SearchPageProps interface
-const SearchResult = async ({ searchParams }) => {
+interface SearchParams {
+  location?: string;
+  startDate?: string;
+  endDate?: string;
+  numOfGuests?: string;
+}
+
+const SearchResult = async ({ 
+  searchParams 
+}: { 
+  searchParams?: SearchParams 
+}) => {
   const {
     location = '',
     startDate = '',
