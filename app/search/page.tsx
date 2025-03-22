@@ -5,22 +5,14 @@ import { get_SearchResult } from "@/app/utils/api";
 import { SearchResultData } from "@/app/types/app";
 import ListingCard from "@/app/components/ListingCard";
 
-interface SearchPageProps {
-  searchParams: {
-    location?: string;
-    startDate?: string;
-    endDate?: string;
-    numOfGuests?: string;
-  };
-}
-
-const SearchResult = async ({ searchParams }: SearchPageProps) => {
+// Removed the SearchPageProps interface
+const SearchResult = async ({ searchParams }) => {
   const {
     location = '',
     startDate = '',
     endDate = '',
     numOfGuests = ''
-  } = searchParams;
+  } = searchParams || {};
 
   // Date formatting with error handling
   let dateRange = '';
