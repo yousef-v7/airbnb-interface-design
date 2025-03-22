@@ -30,7 +30,7 @@ const Header = ({ placeholder }: { placeholder?: string }) => {
 
       {/* Full Navbar for larger screens */}
       <div className="hidden sm:flex">
-        <Navbar />
+      <Navbar iconsOnly={false} />
       </div>
     </header>
   );
